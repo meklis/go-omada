@@ -106,6 +106,14 @@ func New(baseURL string) Controller {
 	}
 }
 
+func NewWithHttpClient(baseURL string, httpClient *http.Client) Controller {
+
+	return Controller{
+		httpClient: httpClient,
+		baseURL:    baseURL,
+	}
+}
+
 func (c *Controller) GetControllerInfo() error {
 
 	address, err := url.JoinPath(c.baseURL, "/api/info")
